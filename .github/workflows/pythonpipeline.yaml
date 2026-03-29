@@ -20,6 +20,7 @@ jobs:
       - name: get pem file
         run: 
           echo "${{secrets.action_key}}" > devops-team.pem
+          chmod 400 devops-team6
 
       - name: cp python
         run:
