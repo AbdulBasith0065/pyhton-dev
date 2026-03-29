@@ -19,7 +19,7 @@ jobs:
 
       - name: get pem file
         run: 
-          echo "${{secrets.action_key}}"> devops-team.pem
+          echo "${{secrets.action_key}}" > devops-team.pem
 
       - name: cp python
         run:
