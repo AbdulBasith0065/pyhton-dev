@@ -16,13 +16,18 @@ jobs:
           python-version: '3.10'
           cache: 'pip'
 
-      - name: virtual env
-        run:  |
-          python3 -m venv virtualenv
-          source virtualenv/bin/activate
+      - name: get pem file
+        run: 
+          echo "${{secrets.action_key}}"> devops-team.pem
 
-      - name: install dependency
-        run: pip3 install -r requirements.txt
+      - name: cp python
+        run:
+          scp -o StrictHostKeyChecking=no -i devops-team.pem app.py ec2-user@13.233.159.221:/home/ec2-user/team6
+
+      - name: cp requirement
+        run:
+          scp -o StrictHostKeyChecking=no -i devops-team.pem requirement.txt ec2-user@13.233.159.221:/home/ec2-user/team6
 
       - name: run application
-        run: python3 app.py
+        run:
+          ssh -o StrictHostKeyChecking=no -i devops-team.pem ec2-user@13.233.159.221"cd/home/ec2-user && python3 -m venv virtualenv && source virtualenv/bin/activate && pip3 install -r requirement.txt && python3 app.py"
