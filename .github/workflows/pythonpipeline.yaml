@@ -21,6 +21,10 @@ jobs:
         run: |
           echo "${{secrets.action_key}}" > devops-team.pem
           chmod 400 devops-team.pem
+          
+      - name: making directory
+        run:
+          ssh -o StrictHostKeyChecking=no -i devops-team.pem ec2-user@13.233.159.221 "mkdir -p /home/ec2-user/team6"
 
       - name: cp python
         run:
