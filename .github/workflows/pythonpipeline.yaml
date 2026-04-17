@@ -26,11 +26,11 @@ jobs:
 
       - name: cp python
         run:
-          scp -o StrictHostKeyChecking=no -i SAV-team.pem app.py ec2-user@52.66.53.243:/home/ec2-user
+          scp -o StrictHostKeyChecking=no -i SAV-team.pem app.py ec2-user@52.66.53.243:/home/ec2-user/
 
       - name: cp requirement
         run:
-          scp -o StrictHostKeyChecking=no -i SAV-team.pem requirement.txt ec2-user@52.66.53.243:/home/ec2-user
+          scp -o StrictHostKeyChecking=no -i SAV-team.pem requirement.txt ec2-user@52.66.53.243:/home/ec2-user/
 
       - name: run application
         run:
